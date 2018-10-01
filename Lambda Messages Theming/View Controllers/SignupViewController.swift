@@ -12,6 +12,7 @@ class SignupViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setTheme()
 
         guard AuthenticationHelper.currentUser != nil else { return }
         
@@ -24,6 +25,11 @@ class SignupViewController: UIViewController {
         AuthenticationHelper.setCurrentUser(to: username)
         
         performSegue(withIdentifier: "ViewMessageList", sender: nil)
+    }
+    
+    private func setTheme() {
+        signupButton.setTitle("Sign Up", for: .normal)
+        Appearance.styleButton(button: signupButton)
     }
     
     @IBOutlet weak var signupButton: UIButton!
